@@ -109,5 +109,5 @@ SELECT
     job_id
 FROM employees
 WHERE job_id LIKE '%MAN%'
-ORDER BY job_id;
+ORDER BY job_id; 
 

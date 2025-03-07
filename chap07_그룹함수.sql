@@ -86,14 +86,9 @@ ORDER BY 평균급여 DESC;
 1-2. 사원 테이블에서 JOB_ID별 월급의 평균을 구하세요. 월급의 평균 순으로 내림차순 정렬하세요.
 */
 SELECT 
-    job_id, 
-    COUNT(*) AS 사원수
-FROM employees
-GROUP BY job_id;
-
-SELECT 
-    job_id, 
-    ROUND(AVG(salary), 2) AS 평균월급
+    job_id,
+    COUNT(*) AS 사원수,
+    AVG(salary) AS 평균월급
 FROM employees
 GROUP BY job_id
 ORDER BY 평균월급 DESC;
@@ -139,12 +134,11 @@ department_id(부서별) salary(월급)의 평균, 합계, count를 구합니다
 조건 2) 평균은 소수 2째 자리에서 절사 하세요.
 */
 
-SELECT 
-    department_id, 
-    TRUNC(AVG(salary + (salary * NVL(commission_pct, 0))), 2) AS 평균급여, 
-    SUM(salary + (salary * NVL(commission_pct, 0))) AS 총급여, 
-    COUNT(*) AS 사원수
+SELECT
+    department_id,
+    TRUNC(AVG(salary + salary*commission_pct), 2) AS avg_salary,
+    SUM(salary + salary*commission_pct) AS total,
+    COUNT(*) AS count
 FROM employees
 WHERE commission_pct IS NOT NULL
-GROUP BY department_id
-ORDER BY 평균급여 DESC;
+GROUP BY department_id;

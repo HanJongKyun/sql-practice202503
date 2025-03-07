@@ -95,7 +95,7 @@ EMPLOYEES 테이블에서 phone_number컬럼은 ###.###.####형태로 저장되�
 */
 SELECT
     phone_number,
-    CONCAT('(02) ', SUBSTR(phone_number, 5)) AS 변경된전화번호
+    CONCAT('(02)', SUBSTR(phone_number, 5)) AS 변경된전화번호
 FROM employees;
 
 
@@ -112,7 +112,7 @@ EMPLOYEES 테이블에서 JOB_ID가 it_prog인 사원의 이름(first_name)과 �
 SELECT
     RPAD(SUBSTR(first_name, 1, 3), LENGTH(first_name), '*') AS name,
     LPAD(salary, 10, '*') AS salary
-FROM employees
+FROM employees 
 WHERE LOWER(job_id) = 'it_prog';
 
 
