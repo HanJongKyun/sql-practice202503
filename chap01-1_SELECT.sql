@@ -55,8 +55,7 @@ SELECT
     hire_date, 
     salary
 FROM employees
-WHERE hire_date BETWEEN TO_DATE('2003-01-01', 'YYYY-MM-DD') 
-                    AND TO_DATE('2003-12-31', 'YYYY-MM-DD');
+WHERE hire_date BETWEEN '03/01/01' AND '03/12/31';
 
 --9. 2003년도 입사한 사원의 이름과 입사일 그리고 급여를 출력하세요.(LIKE 연산자 사용)
 SELECT 
@@ -64,7 +63,7 @@ SELECT
     hire_date, 
     salary
 FROM employees
-WHERE TO_CHAR(hire_date, 'YYYY') LIKE '2003';
+WHERE hire_date LIKE '03%';
 
 --10. 모든 사원의 이름과 급여를 급여가 많은 사원부터 적은 사원 순서로 출력하세요.
 SELECT 
